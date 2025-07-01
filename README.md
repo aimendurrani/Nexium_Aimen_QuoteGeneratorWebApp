@@ -92,4 +92,4 @@ internship/
 
 ## Live link
 
-\[[Add your deployed Vercel link here](https://nexium-aimen-quote-generator-web-ap.vercel.app/)]
+\[[QuoteGeneratorWebApp](https://nexium-aimen-quote-generator-web-ap.vercel.app/)]
