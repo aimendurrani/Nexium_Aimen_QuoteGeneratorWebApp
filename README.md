@@ -1,6 +1,6 @@
 # Quote Generator Web App
 
-This is an initial version of a simple web app that generates motivational quotes based on a topic entered by the user. The app provides an easy way to get inspired by displaying quotes related to themes like fear, success, or failure.
+This is a simple web app that generates motivational quotes based on a topic entered by the user. The app provides an easy way to get inspired by displaying quotes related to themes like fear, success, or failure.
 
 ---
 
@@ -58,6 +58,12 @@ This is an initial version of a simple web app that generates motivational quote
 
 ---
 
+## Deployment
+
+The app is deployed on Vercel. You can visit the live version [here](https://nexium-aimen-quote-generator-web-ap.vercel.app/).
+
+---
+
 ## Folder structure
 
 All code is inside:
@@ -82,3 +88,8 @@ internship/
 * Displays motivational quotes from local data.
 * Responsive design and clean layout.
 
+---
+
+## Live link
+
+\[[Add your deployed Vercel link here](https://nexium-aimen-quote-generator-web-ap.vercel.app/)]
