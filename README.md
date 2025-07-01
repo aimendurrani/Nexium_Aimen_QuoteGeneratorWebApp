@@ -1,6 +1,6 @@
 # Quote Generator Web App
 
-This is a simple web app that generates motivational quotes based on a topic entered by the user. The app provides an easy way to get inspired by displaying quotes related to themes like fear, success, or failure.
+This is an initial version of a simple web app that generates motivational quotes based on a topic entered by the user. The app provides an easy way to get inspired by displaying quotes related to themes like fear, success, or failure.
 
 ---
 
