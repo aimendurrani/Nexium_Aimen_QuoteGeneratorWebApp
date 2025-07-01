@@ -58,12 +58,6 @@ This is an initial version of a simple web app that generates motivational quote
 
 ---
 
-## Deployment
-
-The app is deployed on Vercel. You can visit the live version [here](https://your-vercel-app-url.vercel.app).
-
----
-
 ## Folder structure
 
 All code is inside:
