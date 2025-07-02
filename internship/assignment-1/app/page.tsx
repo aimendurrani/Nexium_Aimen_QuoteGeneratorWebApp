@@ -1,59 +1,62 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-type Quote = {
-  category: string;
-  text: string;
-};
+export default function QuotePage() {
+  const [category, setCategory] = useState("");
+  const [tag, setTag] = useState("");
+  const [quotes, setQuotes] = useState<string[]>([]);
 
-const quotes: Quote[] = [
-  { category: "fear", text: "Do one thing every day that scares you." },
-  { category: "fear", text: "Fear is temporary. Regret is forever." },
-  { category: "fear", text: "Don’t let fear decide your future." },
+  const fetchQuotes = async () => {
+    let query = supabase.from("quotes").select("text, author, category, tags");
 
-  { category: "success", text: "Success is not final; failure is not fatal: It is the courage to continue that counts." },
-  { category: "success", text: "The road to success and the road to failure are almost exactly the same." },
-  { category: "success", text: "Success usually comes to those who are too busy to be looking for it." },
-  
-  { category: "failure", text: "Failure is not the opposite of success, it's part of success" },
-  { category: "failure", text: "Only those who dare to fail greatly can ever achieve greatly." },
-  { category: "failure", text: "I can accept failure, everyone fails at something. But I can't accept not trying." },
-];
+    if (category) {
+      query = query.ilike("category", category);
+    }
 
-export default function Home() {
-  const [topic, setTopic] = useState("");
-  const [results, setResults] = useState<string[]>([]);
+    if (tag) {
+      query = query.contains("tags", [tag]);
+    }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const matched = quotes
-      .filter((q) => q.category.toLowerCase() === topic.toLowerCase())
-      .map((q) => q.text)
-      .slice(0, 3); // take up to 3 quotes
-    setResults(matched.length ? matched : ["No quotes found for this topic."]);
+    const { data, error } = await query;
+
+    if (error) {
+      console.error(error);
+      setQuotes(["Error fetching quotes."]);
+    } else if (!data || data.length === 0) {
+      setQuotes(["No quotes found."]);
+    } else {
+      const shuffled = data.sort(() => 0.5 - Math.random());
+      setQuotes(shuffled.slice(0, 3).map((q) => `${q.text} — ${q.author}`));
+    }
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-sm">
+    <div className="max-w-xl mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Motivational Quote Generator</h1>
+      <div className="flex flex-col gap-2 mb-4">
         <Input
-          placeholder="Enter a topic (e.g., fear, success, failure)"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
+          placeholder="Enter category (e.g. success)"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         />
-        <Button type="submit">Get Quotes</Button>
-      </form>
-
-      {results.length > 0 && (
-        <div className="mt-6 space-y-2 text-center">
-          {results.map((quote, index) => (
-            <p key={index} className="text-lg font-medium">{quote}</p>
-          ))}
-        </div>
-      )}
-    </main>
+        <Input
+          placeholder="Enter tag (optional)"
+          value={tag}
+          onChange={(e) => setTag(e.target.value)}
+        />
+        <Button onClick={fetchQuotes}>Get Quotes</Button>
+      </div>
+      <div className="space-y-2">
+        {quotes.map((quote, idx) => (
+          <div key={idx} className="p-2 rounded bg-gray-100">
+            {quote}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
