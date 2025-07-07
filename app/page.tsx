@@ -10,7 +10,7 @@ export default function Home() {
   const [selection, setSelection] = useState<string>("");
   const [showSuggestions, setShowSuggestions] = useState<boolean>(true);
   const [results, setResults] = useState<{ text: string }[]>([]);
-  const [hasSearched, setHasSearched] = useState<boolean>(false); // ✅ new state
+  const [hasSearched, setHasSearched] = useState<boolean>(false);
 
   const options = Array.from(
     new Set([
@@ -33,7 +33,7 @@ export default function Home() {
 
     setResults(filtered);
     setShowSuggestions(false);
-    setHasSearched(true); // ✅ set after user submits
+    setHasSearched(true);
   };
 
   const filteredSuggestions = selection
@@ -54,8 +54,22 @@ export default function Home() {
       }}
       className="flex flex-col items-center justify-center"
     >
-      <div className="relative p-8 flex flex-col items-center gap-6 bg-white bg-opacity-70 rounded-lg shadow-lg w-full max-w-xl">
-        <h1 className="text-3xl font-bold">Random Quote Generator</h1>
+      {/* ✅ Navbar with custom color */}
+      <nav
+        style={{ backgroundColor: "#040617" }}
+        className="w-full px-6 py-4 flex items-center justify-between text-white shadow-md fixed top-0 z-50"
+      >
+        <div className="text-xl font-semibold">Nexium</div>
+        <div className="absolute left-1/2 transform -translate-x-1/2 text-lg font-bold">
+          Random Quote Generator
+        </div>
+      </nav>
+
+      {/* ✅ Quote Generator Box */}
+      <div className="relative mt-24 p-8 flex flex-col items-center gap-6 bg-white bg-opacity-70 rounded-lg shadow-lg w-full max-w-xl">
+        <h1 className="text-2xl font-semibold text-center">
+          Search a quote that inspires you!
+        </h1>
 
         <form
           onSubmit={handleSubmit}
@@ -67,7 +81,7 @@ export default function Home() {
             onChange={(e) => {
               setSelection(e.target.value);
               setShowSuggestions(true);
-              setHasSearched(false); // reset search state while typing
+              setHasSearched(false);
             }}
           />
 
