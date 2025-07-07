@@ -3,20 +3,22 @@
 
 ---
 
-**Overview**
+# **Overview**
+
 This project is a **Random Quote Generator Web Application** developed as part of Assignment 1 for the **Nexium Internship Program**. The application allows users to search motivational quotes based on specific **topics** or **tags**, and displays up to **three relevant quotes** in a clean, user-friendly interface.
 
 It demonstrates core web development skills using **Next.js (App Router)**, **TypeScript**, **ShadCN UI**, and **custom styling**, while emphasizing good coding practices, UI responsiveness, and user interactivity.
 
 ---
 
-**Live Deployment**
+# **Live Deployment**
+
 You can access the deployed application here:
 **[Quote Generator WebApp](https://nexium-aimen-quote-generator-web-ap.vercel.app/)**
 
 ---
 
-**Key Features**
+# **Key Features**
 
 * Real-time **search functionality** by topic or tag
 * **Interactive suggestion dropdown** while typing
@@ -28,7 +30,7 @@ You can access the deployed application here:
 
 ---
 
-**Technologies Used**
+# **Technologies Used**
 
 * Next.js (13+, App Router)
 * React and TypeScript
@@ -39,7 +41,7 @@ You can access the deployed application here:
 
 ---
 
-**Folder Structure**
+# **Folder Structure**
 
 ```
 Nexium_Aimen_QuoteGeneratorWebApp/
@@ -56,7 +58,7 @@ Nexium_Aimen_QuoteGeneratorWebApp/
 
 ---
 
-**How to Run Locally**
+# **How to Run Locally**
 
 1. **Clone the repository**
 
@@ -98,7 +100,7 @@ Nexium_Aimen_QuoteGeneratorWebApp/
 
 ---
 
-**How It Works**
+# **How It Works**
 
 * The app imports a predefined list of quotes from `quotes.ts`
 * As the user types, suggestions are filtered and displayed dynamically
@@ -108,7 +110,7 @@ Nexium_Aimen_QuoteGeneratorWebApp/
 
 ---
 
-**Notes**
+# **Notes**
 
 * The application supports searching with either **topic keywords** or **tags** like "motivation", "success", "growth", etc.
 * The background image is stored in the `/public` folder and loaded with `backgroundImage: url('/background.png')`
